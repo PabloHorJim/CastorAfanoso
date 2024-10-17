@@ -113,6 +113,15 @@ public class EmbalseService {
         return demarcaciones;
     }
 
+    public static List<Embalse> getFromDemarcacion(String demarcacion) {
+        List<Embalse> embalsesAux = new LinkedList<>();
+        for (Embalse embalse : embalses) {
+            if (embalse.getAmbito_nombre().equals(demarcacion))
+                embalsesAux.add(embalse);
+        }
+        return embalsesAux;
+    }
+
     /**
      * This method returns the embalses from the database
      * @return A list with the embalses

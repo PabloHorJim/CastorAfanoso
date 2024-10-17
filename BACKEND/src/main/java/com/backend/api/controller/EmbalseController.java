@@ -42,4 +42,12 @@ public class EmbalseController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         return ResponseEntity.ok(embalses);
     }
+
+    @GetMapping("/PorDemarcacion")
+    public ResponseEntity<List<Embalse>> getFromDemarcacion(@RequestParam String demarcacion){
+        List<Embalse> embalses = EmbalseService.getFromDemarcacion(demarcacion);
+        if (embalses.isEmpty())
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        return ResponseEntity.ok(embalses);
+    }
 }
