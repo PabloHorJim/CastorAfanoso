@@ -39,7 +39,7 @@
 
         <section id="filtros">
             <h1>Mapa Interactivo de España</h1>
-            <p>Haz click en cualquier sitio de este mapa para establecer los puntos de latitud y longitud de busqueda de embalses o introducelos a mano.</p>
+            <p>Haz click en cualquier sitio de este mapa para establecer los puntos de latitud y longitud de busqueda de embalses, introducelos a mano o pulsa el botton para hacerlo automaticamente.</p>
 
             <!-- Contenedor del mapa -->
             <div id="map"></div>
@@ -56,9 +56,11 @@
                 </div>
                 <div class="coord_div">
                     <span class="lat_lon">Search Radius: </span>
-                    <input type="range" min="0" max="1000" value="100" class="slider" id="radius"/>
+                    <input type="range" min="5" max="1000" value="100" class="slider" id="radius"/>
                     <input type="number" id="radiusValue" value="100" min="0" max="1000"/>
                 </div>
+                <button id="getLocation">Sacar Ubicación Actual</button>
+                <div class="radar_loader"></div>
                 <button id="submit">Submit</button>
             </div>
 
@@ -87,6 +89,7 @@
     <!-- Enlazar el archivo JavaScript externo -->
     <script src="map_script.js"></script>
     <script src="web_script.js"></script>
+    <script src="location_script.js"></script>
     
 </body>
 </html>
