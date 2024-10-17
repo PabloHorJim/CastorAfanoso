@@ -14,19 +14,19 @@ public class Embalse {
     private String cotaCoron;
     private String altCimien;
 
-    public Embalse(int id, String ambito_nombre, String embalse_nombre, double agua_total, double electrico_flag, String x, String y, String provincia, String ccaa, String tipo, String cota_coron, String alt_cimien) {
+    public Embalse(int id, String ambitoNombre, String embalseNombre, double aguaTotal, double electricoFlag, String x, String y, String provincia, String ccaa, String tipo, String cotaCoron, String altCimien) {
         this.id = id;
-        this.ambitoNombre = ambito_nombre;
-        this.embalseNombre = embalse_nombre;
-        this.aguaTotal = agua_total;
-        this.electricoFlag = electrico_flag;
+        this.ambitoNombre = ambitoNombre;
+        this.embalseNombre = embalseNombre;
+        this.aguaTotal = aguaTotal;
+        this.electricoFlag = electricoFlag;
         this.x = x;
         this.y = y;
         this.provincia = provincia;
         this.ccaa = ccaa;
         this.tipo = tipo;
-        this.cotaCoron = cota_coron;
-        this.altCimien = alt_cimien;
+        this.cotaCoron = cotaCoron;
+        this.altCimien = altCimien;
     }
 
     public int getId() {

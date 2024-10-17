@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,10 +21,14 @@ public class EmbalseService {
     private static String appName = "Castores Afanosos";
     private static int year = 2024;
 
-    private static List<Embalse> embalses = getEmbalses();
+    private static List<Embalse> embalses = new ArrayList<>();
     private static String enlaceBD = "https://gbdc01ffb7d1854-castoresafanosos.adb.eu-madrid-1.oraclecloudapps.com/ords/castor_afanoso/combined_embalses/" ;
 
     private static String enlaceAgua = "https://gbdc01ffb7d1854-castoresafanosos.adb.eu-madrid-1.oraclecloudapps.com/ords/castor_afanoso/agua/";
+
+    public EmbalseService() {
+        embalses = getEmbalses();
+    }
     /**
      * This method calculates the distance between two points given their latitude and longitude
      * @param latitudA The latitude of the first point
