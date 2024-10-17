@@ -20,6 +20,7 @@ function showPosition(position) {
     
     document.getElementById("loader").style.display = "none";
     document.getElementById("getLocation").style.display = "inline-block";
+    addCircle(document.getElementById('latitud').value, document.getElementById('longitud').value);
 }
 
 function showError(error) {

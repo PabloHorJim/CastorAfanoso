@@ -4,6 +4,7 @@
 
     slider.oninput = function() {
         numberBox.value = this.value;
+        addCircle(document.getElementById('latitud').value, document.getElementById('longitud').value);
     }
 
     numberBox.oninput = function() {
@@ -12,4 +13,5 @@
         // else if (this.value > 1000)
         //     this.value = 1000;
         slider.value = this.value;
+        addCircle(document.getElementById('latitud').value, document.getElementById('longitud').value);
     }

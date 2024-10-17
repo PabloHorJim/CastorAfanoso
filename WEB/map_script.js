@@ -35,11 +35,6 @@ map.on('click', function(e) {
     addCircle(lat, lng);
 });
 
-document.getElementById("getLocation").addEventListener("click", 
-    function() {
-
-});
-
 // Función para agregar un círculo basado en las coordenadas
 function addCircle(lat, lng) {
     // Si ya hay un círculo, eliminarlo
@@ -48,9 +43,9 @@ function addCircle(lat, lng) {
     }
     // Agregar un círculo de 10 km (10000 metros) de radio
     circle = L.circle([lat, lng], {
-        color: 'blue',
+        color: 'red',
         fillColor: '#f03',
-        fillOpacity: 0.5,
+        fillOpacity: 0.1,
         radius: document.getElementById('radius').value*1000 // x km
     }).addTo(map);
 }
