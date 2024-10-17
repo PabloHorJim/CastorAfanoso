@@ -28,6 +28,14 @@ public class EmbalseService {
         embalses = getEmbalses();
     }
 
+    /**
+     * This method calculates the distance between two points given their latitude and longitude
+     * @param latitudA The latitude of the first point
+     * @param longitudA The longitude of the first point
+     * @param latitudB The latitude of the second point
+     * @param longitudB The longitude of the second point
+     * @return The distance between the two points in kilometers
+     */
     private static double calcularDistancia(double latitudA, double longitudA, double latitudB, double longitudB) {
         final int R = 6371; // Radio de la Tierra en km
 
@@ -49,6 +57,14 @@ public class EmbalseService {
         return R * c; // Distancia en km
     }
 
+    /**
+     * This method calculates the distance between two points given their latitude and longitude
+     * @param latitudA The latitude of the first point
+     * @param longitudA The longitude of the first point
+     * @param latitudB The latitude of the second point
+     * @param longitudB The longitude of the second point
+     * @return The distance between the two points in kilometers
+     */
     private static double calcularDistancia(String latitudA, String longitudA, String latitudB, String longitudB) {
         try {
             // Reemplazar coma por punto
@@ -70,6 +86,13 @@ public class EmbalseService {
         return -1;
     }
 
+    /**
+     * This method returns the embalses that are within a certain distance from a point
+     * @param lat The latitude of the point
+     * @param lon The longitude of the point
+     * @param distancia The distance in kilometers
+     * @return A list with the embalses that are within the distance
+     */
     public static List<Embalse> getFromDist(String lat, String lon, Integer distancia) {
         List<Embalse> embalsesAux = new LinkedList<>();
         for (Embalse embalse : embalses) {
@@ -80,6 +103,25 @@ public class EmbalseService {
         return embalsesAux;
     }
 
+    /**
+     * This method returns the different demarcations of the embalses
+     * @return A list with the different demarcations
+     */
+    public static List<String> getDemarcaciones() {
+        List<String> demarcaciones = new LinkedList<>();
+        for (Embalse embalse : embalses) {
+            if (!demarcaciones.contains(embalse.getAmbito_nombre()))
+                demarcaciones.add(embalse.getAmbito_nombre());
+        }
+        return demarcaciones;
+    }
+
+    /**
+     * This method returns the different provinces of the embalses
+     * @param url_resource The URL of the resource
+     * @return A list with the different provinces
+     * @throws IOException If there is an error accessing the resource
+     */
     private HttpsURLConnection getHttpsURLConnection(String url_resource) throws IOException {
         url_resource = url_resource + "?offset=0&limit=1000";
         URL service = new URL(url_resource);
@@ -112,7 +154,11 @@ public class EmbalseService {
         return parser.fromJson(new InputStreamReader(in), tClass);
     }
 
-    public List<Embalse> getEmbalses() {
+    /**
+     * This method returns the embalses from the database
+     * @return A list with the embalses
+     */
+    private List<Embalse> getEmbalses() {
         try {
             HttpsURLConnection connection = getHttpsURLConnection(enlaceBD);
             EmbalseResponse response = deserializeResponse(connection, EmbalseResponse.class);
@@ -123,7 +169,9 @@ public class EmbalseService {
         }
     }
 
-
+    /**
+     * This method prints the embalses from the database for debugging purposes
+     */
     private void printEmbalses(List<Embalse> embalses) {
         for (Embalse embalse : embalses) {
             System.out.println(embalse.toString());

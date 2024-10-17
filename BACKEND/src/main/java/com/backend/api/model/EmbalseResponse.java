@@ -2,6 +2,7 @@ package com.backend.api.model;
 
 import java.util.List;
 
+
 public class EmbalseResponse {
     private List<Embalse> items;
     private String next; // This would store the URL of the next page if pagination is supported
