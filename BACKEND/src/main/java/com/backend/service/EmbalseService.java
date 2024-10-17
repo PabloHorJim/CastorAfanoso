@@ -26,7 +26,6 @@ public class EmbalseService {
 
     public EmbalseService() {
         embalses = getEmbalses();
-        printEmbalses(embalses);
     }
 
     private static double calcularDistancia(double latitudA, double longitudA, double latitudB, double longitudB) {
