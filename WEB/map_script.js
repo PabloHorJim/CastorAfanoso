@@ -19,7 +19,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     minZoom: 6 // Establecer un zoom mínimo para evitar alejarse demasiado
 }).addTo(map);
 
-// Evento para obtener las coordenadas al hacer clic en el mapa
+var circle; // Variable to store the circle
+
+// Evento para obtener las coordenadas al hacer clic en el mapa y agregar un círculo
 map.on('click', function(e) {
     // Obtener latitud y longitud del clic
     var lat = e.latlng.lat;
@@ -28,4 +30,40 @@ map.on('click', function(e) {
     // Mostrar latitud y longitud en los cuadros de texto
     document.getElementById('latitud').value = lat.toFixed(6);
     document.getElementById('longitud').value = lng.toFixed(6);
+
+    // Agregar el círculo de 10 km de radio en el mapa
+    addCircle(lat, lng);
 });
+
+document.getElementById("getLocation").addEventListener("click", 
+    function() {
+        
+}
+
+// Función para agregar un círculo basado en las coordenadas
+function addCircle(lat, lng) {
+    // Si ya hay un círculo, eliminarlo
+    if (circle) {
+        map.removeLayer(circle);
+    }
+    // Agregar un círculo de 10 km (10000 metros) de radio
+    circle = L.circle([lat, lng], {
+        color: 'blue',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: document.getElementById('radius').value*1000 // x km
+    }).addTo(map);
+}
+
+// Función para agregar un círculo basado en los valores de los cuadros de texto
+function addCircleFromInput() {
+    var lat = parseFloat(document.getElementById('latitud').value);
+    var lng = parseFloat(document.getElementById('longitud').value);
+
+    // Solo agregar si las coordenadas son válidas
+    if (!isNaN(lat) && !isNaN(lng)) {
+        addCircle(lat, lng);
+    } else {
+        alert("Please enter valid latitude and longitude values.");
+    }
+}
