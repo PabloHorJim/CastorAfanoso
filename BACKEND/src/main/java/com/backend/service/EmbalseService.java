@@ -1,19 +1,32 @@
 package com.backend.service;
 
 import com.backend.api.model.Embalse;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+@Service
 public class EmbalseService {
 
-    private List<Embalse> embalses = new ArrayList<Embalse>();
+    private static List<Embalse> embalses = new ArrayList<Embalse>();
     private static String enlaceBD = "" ;
 
     public EmbalseService() {
-
-        //double distancia = calcularDistancia();
+        Embalse aux = new Embalse(3,
+                "GUADALQUIVIR",
+                "FERNANDINA, LA",
+                247,
+                false,
+                "38,179645624",
+                "-3,57022439999997",
+                "Jaén",
+                "Andalucía",
+                "Presa de fábrica de gravedad (hormigón vibrado)",
+                null,
+                null);
+        embalses.add(aux);
     }
 
     private static double calcularDistancia(double latitudA, double longitudA, double latitudB, double longitudB) {
@@ -58,14 +71,13 @@ public class EmbalseService {
         return -1;
     }
 
-    public List<Embalse> getFromDist(String lat, String lon, String dist) {
+    public static List<Embalse> getFromDist(String lat, String lon, Integer distancia) {
         List<Embalse> embalsesAux = new LinkedList<>();
-        int distancia = Integer.parseInt(dist);
         for (Embalse embalse : embalses) {
             double distCalculada = calcularDistancia(embalse.getX(), embalse.getY(), lat, lon);
-            if (distCalculada < distancia && distCalculada > 0)
+            if ((distCalculada > 0) && (distCalculada < distancia))
                 embalsesAux.add(embalse);
         }
-        return embalses;
+        return embalsesAux;
     }
 }
