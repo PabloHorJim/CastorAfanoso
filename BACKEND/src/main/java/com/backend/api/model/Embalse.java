@@ -16,6 +16,17 @@ public class Embalse {
 
     public Embalse(int id, String ambitoNombre, String embalseNombre, double aguaTotal, double electricoFlag, String x, String y, String provincia, String ccaa, String tipo, String cotaCoron, String altCimien) {
         this.id = id;
+        this.ambitoNombre = ambitoNombre;
+        this.embalseNombre = embalseNombre;
+        this.aguaTotal = aguaTotal;
+        this.electricoFlag = electricoFlag;
+        this.x = x;
+        this.y = y;
+        this.provincia = provincia;
+        this.ccaa = ccaa;
+        this.tipo = tipo;
+        this.cotaCoron = cotaCoron;
+        this.altCimien = altCimien;
     }
 
     public int getId() {
