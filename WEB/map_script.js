@@ -39,16 +39,36 @@ map.on('click', function(e) {
 function addCircle(lat, lng) {
     // Si ya hay un círculo, eliminarlo
     if (circle) {
-        map.removeLayer(circle);
+        removeAllLayers();
     }
     // Agregar un círculo de 10 km (10000 metros) de radio
     circle = L.circle([lat, lng], {
         color: 'red',
-        fillColor: '#f03',
+        fillColor: 'green',
         fillOpacity: 0.1,
         radius: document.getElementById('radius').value*1000 // x km
     }).addTo(map);
 }
+
+function addChinchet(lat, lng) {
+    // Agregar un círculo de 10 km (10000 metros) de radio
+    circle = L.circle([lat, lng], {
+        color: 'red',
+        fillColor: 'red',
+        fillOpacity: 1,
+        radius: 2000 // x km
+    }).addTo(map);
+}
+
+function removeAllLayers() {
+    map.eachLayer(function(layer) {
+        // Check if the layer is not the base map tile layer
+        if (!(layer instanceof L.TileLayer)) {
+            map.removeLayer(layer);
+        }
+    });
+}
+
 
 // Función para agregar un círculo basado en los valores de los cuadros de texto
 function addCircleFromInput() {
