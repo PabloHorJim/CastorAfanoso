@@ -13,33 +13,13 @@
 
     <!-- Barra de navegación -->
     <div class="navbar">
-        <a href="#introduccion">Inicio</a>
-        <a href="#filtros">Filtros</a>
+        <a href="#buscador">Filtros</a>
         <a href="#info">Info</a>
     </div>
 
-    <!-- Contenido de la página -->
-    <div class="content">
-        <section id="introduccion">
-            <h2>Introducción</h2>
-            <p>Bienvenidos a nuestra aplicación web, diseñada para ofrecer una experiencia segura y accesible desde cualquier dispositivo móvil. Esta aplicación permite a los usuarios, utilizando las coordenadas de su ubicación actual o introduciendo manualmente coordenadas GPS, visualizar información detallada sobre los embalses que se encuentran en un radio ajustable de hasta 1000km. Los usuarios pueden personalizar este radio según sus necesidades.</p>
-        
-            <p>Entre las funcionalidades principales se encuentran:</p>
-            <ul>
-                <li><strong>Visualización de embalses cercanos:</strong> Se muestran los embalses dentro del radio de acción configurado por el usuario, con información extraída de nuestras bases de datos.</li>
-                <li><strong>Filtrado avanzado:</strong> Los usuarios pueden realizar filtrados por cualquiera de los atributos de los embalses, como la demarcación, cantidad de agua almacenada, o uso del embalse.</li>
-                <li><strong>Estadísticas personalizadas:</strong> La aplicación permite calcular y visualizar estadísticas importantes, como máximos, mínimos, medias y otros valores clave. Esto incluye datos específicos de la cantidad de agua embalsada al final del año hidrológico o natural, por embalse, ámbito o demarcación.</li>
-            </ul>
-        
-            <p>Además, para garantizar un uso eficiente y seguro de la aplicación, hemos implementado medidas de seguridad avanzadas que previenen ataques como el web scraping o la denegación de servicio (DoS). Estas medidas aseguran que la aplicación funcione de manera óptima incluso frente a consultas masivas provenientes de herramientas automatizadas.</p>
-        
-            <p>Disfruta de una experiencia completa, segura y funcional con nuestra aplicación para la consulta y análisis de datos de embalses.</p>
-        </section>
-        
-
-        <section id="filtros">
+        <section id="buscador">
             <h1>Mapa Interactivo de España</h1>
-            <p>Haz click en cualquier sitio de este mapa para establecer los puntos de latitud y longitud de busqueda de embalses, introducelos a mano o pulsa el botton para hacerlo automaticamente.</p>
+            <p>Haz click en cualquier sitio de este mapa para establecer los puntos de latitud y longitud de busqueda de embalses, introducelos a mano o pulsa el botón para hacerlo automaticamente.</p>
 
             <!-- Contenedor del mapa -->
             <div id="map"></div>
@@ -59,8 +39,13 @@
                     <input type="range" min="5" max="1000" value="100" class="slider" id="radius"/>
                     <input type="number" id="radiusValue" value="100" min="0" max="1000"/>
                 </div>
-                <button id="getLocation">Sacar Ubicación Actual</button>
-                <div class="radar_loader"></div>
+                <button id="getLocation">Calcular Ubicación Actual</button>
+                <div class="newtons-cradle" id="loader">
+                <div class="newtons-cradle__dot"></div>
+                <div class="newtons-cradle__dot"></div>
+                <div class="newtons-cradle__dot"></div>
+                <div class="newtons-cradle__dot"></div>
+                </div>
                 <button id="submit">Submit</button>
             </div>
 
