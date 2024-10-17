@@ -1,6 +1,7 @@
 package com.backend.service;
 
 import com.backend.api.model.Embalse;
+import com.backend.api.model.EmbalseResponse;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -8,6 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import com.google.gson.Gson;
@@ -23,19 +25,7 @@ public class EmbalseService {
     private static String enlaceBD = "https://gbdc01ffb7d1854-castoresafanosos.adb.eu-madrid-1.oraclecloudapps.com/ords/castor_afanoso/combined_embalses/" ;
 
     public EmbalseService() {
-        Embalse aux = new Embalse(3,
-                "GUADALQUIVIR",
-                "FERNANDINA, LA",
-                247,
-                false,
-                "38,179645624",
-                "-3,57022439999997",
-                "Jaén",
-                "Andalucía",
-                "Presa de fábrica de gravedad (hormigón vibrado)",
-                null,
-                null);
-        embalses.add(aux);
+        embalses = getEmbalses();
     }
 
     private static double calcularDistancia(double latitudA, double longitudA, double latitudB, double longitudB) {
@@ -91,7 +81,7 @@ public class EmbalseService {
     }
 
     private HttpsURLConnection getHttpsURLConnection(String url_resource) throws IOException {
-
+        url_resource = url_resource + "?offset=0&limit=1000";
         URL service = new URL(url_resource);
         // Create the connection from the URL
         HttpsURLConnection connection = (HttpsURLConnection) service.openConnection();
@@ -122,16 +112,17 @@ public class EmbalseService {
         return parser.fromJson(new InputStreamReader(in), tClass);
     }
 
-    public <T> T getResource(String urlname, Class<T> tClass) {
-        urlname = urlname.replaceAll("http:", "https:");
+    public List<Embalse> getEmbalses() {
         try {
-            HttpsURLConnection connection = getHttpsURLConnection(urlname);
-            return deserializeResponse(connection, tClass);
+            HttpsURLConnection connection = getHttpsURLConnection(enlaceBD);
+            EmbalseResponse response = deserializeResponse(connection, EmbalseResponse.class);
+            return response.getItems();
         } catch (IOException e) {
-            //If the resource is not found, the upper level will retry with another resource
-            return null;
+            // If the resource is not found, the upper level will retry with another resource
+            return Collections.emptyList();
         }
     }
+
 
     private void printEmbalses(List<Embalse> embalses) {
         for (Embalse embalse : embalses) {

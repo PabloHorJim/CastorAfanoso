@@ -5,7 +5,7 @@ public class Embalse {
     private String ambito_nombre;
     private String embalse_nombre;
     private double agua_total;
-    private boolean electrico_flag;
+    private double electrico_flag;
     private String x;
     private String y;
     private String provincia;
@@ -14,7 +14,7 @@ public class Embalse {
     private String cota_coron;
     private String alt_cimien;
 
-    public Embalse(int id, String ambito_nombre, String embalse_nombre, double agua_total, boolean electrico_flag, String x, String y, String provincia, String ccaa, String tipo, String cota_coron, String alt_cimien) {
+    public Embalse(int id, String ambito_nombre, String embalse_nombre, double agua_total, double electrico_flag, String x, String y, String provincia, String ccaa, String tipo, String cota_coron, String alt_cimien) {
         this.id = id;
         this.ambito_nombre = ambito_nombre;
         this.embalse_nombre = embalse_nombre;
@@ -45,7 +45,7 @@ public class Embalse {
         return agua_total;
     }
 
-    public boolean isElectrico_flag() {
+    public double isElectrico_flag() {
         return electrico_flag;
     }
 
@@ -75,5 +75,9 @@ public class Embalse {
 
     public String getAlt_cimien() {
         return alt_cimien;
+    }
+
+    public String toString(){
+        return "Embalse: " + embalse_nombre + " - " + agua_total + " - " + x + " - " + y;
     }
 }
