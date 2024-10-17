@@ -65,7 +65,7 @@ button {
 
 /* Estilo para el cuerpo */
 body {
-    background-color: #cacaca;
+    background-color: #e1e1e1;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -130,8 +130,9 @@ p, h1, ul {
 
 /* Estilo para el contenedor del mapa */
 #map {
+    align-self: center;
     height: 80vh;
-    width: 90%;
+    width: 80%;
     margin: 5% 5%;
 }
 
