@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,16 +17,13 @@ import javax.net.ssl.HttpsURLConnection;
 
 @Service
 public class EmbalseService {
-    private static String app_name = "Castores Afanosos";
+    private static String appName = "Castores Afanosos";
     private static int year = 2024;
 
-    private static List<Embalse> embalses = new ArrayList<Embalse>();
+    private static List<Embalse> embalses = getEmbalses();
     private static String enlaceBD = "https://gbdc01ffb7d1854-castoresafanosos.adb.eu-madrid-1.oraclecloudapps.com/ords/castor_afanoso/combined_embalses/" ;
 
-    public EmbalseService() {
-        embalses = getEmbalses();
-    }
-
+    private static String enlaceAgua = "https://gbdc01ffb7d1854-castoresafanosos.adb.eu-madrid-1.oraclecloudapps.com/ords/castor_afanoso/agua/";
     /**
      * This method calculates the distance between two points given their latitude and longitude
      * @param latitudA The latitude of the first point
@@ -117,25 +113,39 @@ public class EmbalseService {
     }
 
     /**
+     * This method returns the embalses from the database
+     * @return A list with the embalses
+     */
+    private static List<Embalse> getEmbalses() {
+        try {
+            HttpsURLConnection connection = getHttpsURLConnection(enlaceBD + "?offset=0&limit=1000");
+            EmbalseResponse response = deserializeResponse(connection, EmbalseResponse.class);
+            return response.getItems();
+        } catch (IOException e) {
+            // If the resource is not found, the upper level will retry with another resource
+            return Collections.emptyList();
+        }
+    }
+
+    /**
      * This method returns the different provinces of the embalses
-     * @param url_resource The URL of the resource
+     * @param urlResource The URL of the resource
      * @return A list with the different provinces
      * @throws IOException If there is an error accessing the resource
      */
-    private HttpsURLConnection getHttpsURLConnection(String url_resource) throws IOException {
-        url_resource = url_resource + "?offset=0&limit=1000";
-        URL service = new URL(url_resource);
+    private static HttpsURLConnection getHttpsURLConnection(String urlResource) throws IOException {
+        URL service = new URL(urlResource);
         // Create the connection from the URL
         HttpsURLConnection connection = (HttpsURLConnection) service.openConnection();
         // Add the headers User-Agent and Accept (see the statement)
-        connection.setRequestProperty("User-Agent", app_name + "-" + year);
+        connection.setRequestProperty("User-Agent", appName + "-" + year);
         connection.setRequestProperty("Accept", "application/json");
         // Indicate that it is a GET request
         connection.setRequestMethod("GET");
         // Check that the response code received is correct
         int responseCode = connection.getResponseCode();
         if (responseCode < 200 || responseCode >= 300) {
-            throw new IOException("Failed trying to access: " + url_resource + "\nHTTP error code : " + responseCode);
+            throw new IOException("Failed trying to access: " + urlResource + "\nHTTP error code : " + responseCode);
         }
         return connection;
     }
@@ -148,33 +158,22 @@ public class EmbalseService {
      * @param <T> The type of the object to be deserialized
      * @throws IOException If there is an error deserializing the response
      */
-    private <T> T deserializeResponse(HttpsURLConnection connection, Class<T> tClass) throws IOException {
+    private static <T> T deserializeResponse(HttpsURLConnection connection, Class<T> tClass) throws IOException {
         Gson parser = new Gson();
         InputStream in = connection.getInputStream(); // Get the InputStream from the connection
         return parser.fromJson(new InputStreamReader(in), tClass);
     }
 
-    /**
-     * This method returns the embalses from the database
-     * @return A list with the embalses
-     */
-    private List<Embalse> getEmbalses() {
+    public int getMaxEmbalse (Embalse embalse){
+        int res = 0;
+        int id = embalse.getId();
         try {
-            HttpsURLConnection connection = getHttpsURLConnection(enlaceBD);
-            EmbalseResponse response = deserializeResponse(connection, EmbalseResponse.class);
-            return response.getItems();
-        } catch (IOException e) {
-            // If the resource is not found, the upper level will retry with another resource
-            return Collections.emptyList();
-        }
-    }
+            HttpsURLConnection connection = getHttpsURLConnection(enlaceAgua+"id="+id);
 
-    /**
-     * This method prints the embalses from the database for debugging purposes
-     */
-    private void printEmbalses(List<Embalse> embalses) {
-        for (Embalse embalse : embalses) {
-            System.out.println(embalse.toString());
         }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        return res;
     }
 }
