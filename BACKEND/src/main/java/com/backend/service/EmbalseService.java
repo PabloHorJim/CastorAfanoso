@@ -1,19 +1,14 @@
 package com.backend.service;
-
 import com.backend.api.model.Embalse;
 import com.backend.api.model.EmbalseResponse;
-import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import com.google.gson.Gson;
+import java.util.*;
 
+import com.google.gson.Gson;
+import org.springframework.stereotype.Service;
 import javax.net.ssl.HttpsURLConnection;
 
 @Service
@@ -21,13 +16,15 @@ public class EmbalseService {
     private static String appName = "Castores Afanosos";
     private static int year = 2024;
 
-    private static List<Embalse> embalses = new ArrayList<>();
+    private static List<Embalse> embalses = new ArrayList<Embalse>();
     private static String enlaceBD = "https://gbdc01ffb7d1854-castoresafanosos.adb.eu-madrid-1.oraclecloudapps.com/ords/castor_afanoso/combined_embalses/" ;
 
     private static String enlaceAgua = "https://gbdc01ffb7d1854-castoresafanosos.adb.eu-madrid-1.oraclecloudapps.com/ords/castor_afanoso/agua/";
 
     public EmbalseService() {
+        // Print the embalses
         embalses = getEmbalses();
+        printEmbalses(embalses);
     }
     /**
      * This method calculates the distance between two points given their latitude and longitude
@@ -181,4 +178,14 @@ public class EmbalseService {
         }
         return res;
     }
+/**
+     * This method prints the embalses for debugging purposes
+     * @param embalses The list of embalses
+
+    private void printEmbalses(List<Embalse> embalses) {
+        for (Embalse embalse : embalses) {
+            System.out.println(embalse.toString());
+        }
+    }
+ */
 }

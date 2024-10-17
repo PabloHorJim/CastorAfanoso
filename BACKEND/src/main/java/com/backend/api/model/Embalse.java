@@ -2,51 +2,72 @@ package com.backend.api.model;
 
 public class Embalse {
     private int id;
-    private String ambitoNombre;
-    private String embalseNombre;
-    private double aguaTotal;
-    private double electricoFlag;
+    private String ambito_nombre;
+    private String embalse_nombre;
+    private double agua_total;
+    private double electrico_flag;
     private String x;
     private String y;
     private String provincia;
     private String ccaa;
     private String tipo;
-    private String cotaCoron;
-    private String altCimien;
+    private String cota_coron;
+    private String alt_cimien;
 
-    public Embalse(int id, String ambitoNombre, String embalseNombre, double aguaTotal, double electricoFlag, String x, String y, String provincia, String ccaa, String tipo, String cotaCoron, String altCimien) {
+    public Embalse(int id, String ambito_nombre, String embalse_nombre, double agua_total, double electrico_flag, String x, String y, String provincia, String ccaa, String tipo, String cota_coron, String alt_cimien) {
         this.id = id;
-        this.ambitoNombre = ambitoNombre;
-        this.embalseNombre = embalseNombre;
-        this.aguaTotal = aguaTotal;
-        this.electricoFlag = electricoFlag;
+        this.ambito_nombre = ambito_nombre;
+        this.embalse_nombre = embalse_nombre;
+        this.agua_total = agua_total;
+        this.electrico_flag = electrico_flag;
         this.x = x;
         this.y = y;
         this.provincia = provincia;
         this.ccaa = ccaa;
         this.tipo = tipo;
-        this.cotaCoron = cotaCoron;
-        this.altCimien = altCimien;
+        this.cota_coron = cota_coron;
+        this.alt_cimien = alt_cimien;
+
     }
 
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getAmbito_nombre() {
-        return ambitoNombre;
+        return ambito_nombre;
+    }
+
+    public void setAmbito_nombre(String ambito_nombre) {
+        this.ambito_nombre = ambito_nombre;
     }
 
     public String getEmbalse_nombre() {
-        return embalseNombre;
+        return embalse_nombre;
+    }
+
+    public void setEmbalse_nombre(String embalse_nombre) {
+        this.embalse_nombre = embalse_nombre;
     }
 
     public double getAgua_total() {
-        return aguaTotal;
+        return agua_total;
     }
 
-    public double isElectrico_flag() {
-        return electricoFlag;
+    public void setAgua_total(double agua_total) {
+        this.agua_total = agua_total;
+    }
+
+    public double getElectrico_flag() {
+        return electrico_flag;
+    }
+
+    public void setElectrico_flag(double electrico_flag) {
+        this.electrico_flag = electrico_flag;
     }
 
     public String getX() {
@@ -57,27 +78,22 @@ public class Embalse {
         return y;
     }
 
-    public String getProvincia() {
-        return provincia;
+    public String toString() {
+        return "Embalse{" +
+                "id=" + id +
+                ", ambito_nombre='" + ambito_nombre + '\'' +
+                ", embalse_nombre='" + embalse_nombre + '\'' +
+                ", agua_total=" + agua_total +
+                ", electrico_flag=" + electrico_flag +
+                ", x='" + x + '\'' +
+                ", y='" + y + '\'' +
+                ", provincia='" + provincia + '\'' +
+                ", ccaa='" + ccaa + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", cota_coron='" + cota_coron + '\'' +
+                ", alt_cimien='" + alt_cimien + '\'' +
+                '}';
     }
 
-    public String getCcaa() {
-        return ccaa;
-    }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public String getCota_coron() {
-        return cotaCoron;
-    }
-
-    public String getAlt_cimien() {
-        return altCimien;
-    }
-
-    public String toString(){
-        return "Embalse: " + embalseNombre + " - " + aguaTotal + " - " + x + " - " + y;
-    }
 }
