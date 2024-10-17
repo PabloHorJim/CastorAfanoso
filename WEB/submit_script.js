@@ -32,18 +32,19 @@ function submitClick() {
 
             // Iterar sobre los datos y crear elementos li
             data.forEach(embalse => {
-                const li = document.createElement('li');
-                li.innerHTML = `
+                const div = document.createElement('div');
+                div.id = "output";
+                div.innerHTML = `
+                    <div id="out_info">
                     <strong>Nombre:</strong> ${embalse.embalse_nombre}<br>
                     <strong>Ámbito:</strong> ${embalse.ambito_nombre}<br>
                     <strong>Agua Total:</strong> ${embalse.agua_total} m³<br>
                     <strong>Provincia:</strong> ${embalse.provincia}<br>
                     <strong>CCAA:</strong> ${embalse.ccaa}<br>
                     <strong>Tipo:</strong> ${embalse.tipo}<br>
-                    <strong>Cota Coron:</strong> ${embalse.cota_coron !== null ? embalse.cota_coron : 'N/A'}<br>
-                    <strong>Altura de Cimien:</strong> ${embalse.alt_cimien !== null ? embalse.alt_cimien : 'N/A'}<br>
+                    </div>
                 `;
-                ul.appendChild(li); // Añadir el li a la lista
+                ul.appendChild(div); // Añadir el li a la lista
             });
 
             resultDiv.appendChild(ul); // Añadir la lista al div result

@@ -63,6 +63,8 @@ button {
 }
 
 
+
+
 /* Estilo para el cuerpo */
 body {
     background-color: #e1e1e1;
@@ -215,3 +217,17 @@ p, h1, ul {
     }
    }
    
+   #output {
+    border: 2px solid #007BFF; /* Color del borde */
+    border-radius: 8px; /* Esquinas redondeadas */
+    padding: 10px; /* Espaciado interno */
+    margin: 10px 0; /* Espaciado externo */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+/* Estilo para cuando el ratón está encima */
+#output:hover {
+    background-color: #f0f8ff; /* Color de fondo cuando está en hover */
+    transform: scale(1.02); /* Ligeramente aumentar el tamaño */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para efecto de profundidad */
+}
