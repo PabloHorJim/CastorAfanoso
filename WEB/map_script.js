@@ -37,8 +37,8 @@ map.on('click', function(e) {
 
 document.getElementById("getLocation").addEventListener("click", 
     function() {
-        
-}
+
+});
 
 // Función para agregar un círculo basado en las coordenadas
 function addCircle(lat, lng) {
