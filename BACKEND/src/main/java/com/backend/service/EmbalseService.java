@@ -33,7 +33,7 @@ public class EmbalseService {
      * @param longitudB The longitude of the second point
      * @return The distance between the two points in kilometers
      */
-    private static double calcularDistancia(double latitudA, double longitudA, double latitudB, double longitudB) {
+    public static double calcularDistancia(double latitudA, double longitudA, double latitudB, double longitudB) {
         final int R = 6371; // Radio de la Tierra en km
 
         // Conversión a radianes
@@ -174,17 +174,12 @@ public class EmbalseService {
         return parser.fromJson(new InputStreamReader(in), tClass);
     }
 
-    public int getMaxEmbalse (Embalse embalse){
-        int res = 0;
-        int id = embalse.getId();
-        try {
-            HttpsURLConnection connection = getHttpsURLConnection(enlaceAgua+"id="+id);
-
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        return res;
+    /**
+     * This method sets the embalses for testing purposes
+     * @param mockEmbalses The list of embalses
+     */
+    public static void setEmbalses(List<Embalse> mockEmbalses) {
+        embalses = mockEmbalses;
     }
 /**
      * This method prints the embalses for debugging purposes

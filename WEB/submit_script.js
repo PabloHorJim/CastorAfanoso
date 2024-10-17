@@ -32,6 +32,9 @@ function submitClick() {
 
             // Iterar sobre los datos y crear elementos li
             data.forEach(embalse => {
+
+                addChinchet(parseFloat(embalse.x), parseFloat(embalse.y));
+
                 const div = document.createElement('div');
                 div.id = "output";
                 div.innerHTML = `
