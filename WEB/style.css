@@ -16,7 +16,7 @@
     align-items: center; /* Alinea los elementos verticalmente */
     justify-content: center; /* Alinea los elementos horizontalmente */
     margin-bottom: 10px;
-    width: 80%; /* Cada input ocupará 1/3 del ancho */
+    width: 70%; /* Cada input ocupará 1/3 del ancho */
 }
 
 .coord_div span {
@@ -30,6 +30,7 @@
     padding: 10px;
     font-size: 16px;
     margin-left: 10px;
+    text-align: center;
 }
 
 .coord button {
