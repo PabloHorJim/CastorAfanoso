@@ -30,6 +30,10 @@ public class Embalse {
 
     }
 
+    /*
+    Getters for the Embalse class, name of each attribute correspond to the name of the attribute in the database
+     */
+
     public String getTipo() {
         return tipo;
     }
@@ -94,8 +98,6 @@ public class Embalse {
         return ccaa;
     }
 
-
-
     public String toString() {
         return "Embalse{" +
                 "id=" + id +
@@ -112,6 +114,4 @@ public class Embalse {
                 ", alt_cimien='" + alt_cimien + '\'' +
                 '}';
     }
-
-
 }
