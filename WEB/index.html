@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Web</title>
+</head>
+    <!-- Incluir el CSS de Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Incluir el CSS del contenido -->
+    <link href="style.css" type="text/css" rel="stylesheet" />
+<body>
+
+    <!-- Barra de navegación -->
+    <div class="navbar">
+        <a href="#introduccion">Inicio</a>
+        <a href="#filtros">Filtros</a>
+        <a href="#info">Info</a>
+    </div>
+
+    <!-- Contenido de la página -->
+    <div class="content">
+        <section id="introduccion">
+            <h2>Introducción</h2>
+            <p>Bienvenidos a nuestra aplicación web, diseñada para ofrecer una experiencia segura y accesible desde cualquier dispositivo móvil. Esta aplicación permite a los usuarios, utilizando las coordenadas de su ubicación actual o introduciendo manualmente coordenadas GPS, visualizar información detallada sobre los embalses que se encuentran en un radio ajustable de hasta 1000km. Los usuarios pueden personalizar este radio según sus necesidades.</p>
+        
+            <p>Entre las funcionalidades principales se encuentran:</p>
+            <ul>
+                <li><strong>Visualización de embalses cercanos:</strong> Se muestran los embalses dentro del radio de acción configurado por el usuario, con información extraída de nuestras bases de datos.</li>
+                <li><strong>Filtrado avanzado:</strong> Los usuarios pueden realizar filtrados por cualquiera de los atributos de los embalses, como la demarcación, cantidad de agua almacenada, o uso del embalse.</li>
+                <li><strong>Estadísticas personalizadas:</strong> La aplicación permite calcular y visualizar estadísticas importantes, como máximos, mínimos, medias y otros valores clave. Esto incluye datos específicos de la cantidad de agua embalsada al final del año hidrológico o natural, por embalse, ámbito o demarcación.</li>
+            </ul>
+        
+            <p>Además, para garantizar un uso eficiente y seguro de la aplicación, hemos implementado medidas de seguridad avanzadas que previenen ataques como el web scraping o la denegación de servicio (DoS). Estas medidas aseguran que la aplicación funcione de manera óptima incluso frente a consultas masivas provenientes de herramientas automatizadas.</p>
+        
+            <p>Disfruta de una experiencia completa, segura y funcional con nuestra aplicación para la consulta y análisis de datos de embalses.</p>
+        </section>
+        
+
+        <section id="filtros">
+            <h1>Mapa Interactivo de España</h1>
+            <p>Haz click en cualquier sitio de este mapa para establecer los puntos de latitud y longitud de busqueda de embalses o introducelos a mano.</p>
+
+            <!-- Contenedor del mapa -->
+            <div id="map"></div>
+
+            <!-- Cuadros de texto para mostrar las coordenadas -->
+            <div class="coords">
+                <div class="coord_div">
+                    <span class="lat_lon">Latitude:</span>
+                    <input type="text" id="latitud" placeholder="Latitud"/>
+                </div>
+                <div class="coord_div">
+                    <span class="lat_lon">Longitude: </span>
+                    <input type="text" id="longitud" placeholder="Longitud"/>
+                </div>
+                <div class="coord_div">
+                    <span class="lat_lon">Search Radius: </span>
+                    <input type="range" min="0" max="1000" value="100" class="slider" id="radius"/>
+                    <input type="number" id="radiusValue" value="100" min="0" max="1000"/>
+                </div>
+                <button id="submit">Submit</button>
+            </div>
+
+        </section>
+
+        <section id="info">
+            <h1>Información Generada:</h1>
+            <p>Información sobre la página.</p>
+            <p>Bienvenidos a nuestra aplicación web, diseñada para ofrecer una experiencia segura y accesible desde cualquier dispositivo móvil. Esta aplicación permite a los usuarios, utilizando las coordenadas de su ubicación actual o introduciendo manualmente coordenadas GPS, visualizar información detallada sobre los embalses que se encuentran en un radio ajustable de hasta 1000km. Los usuarios pueden personalizar este radio según sus necesidades.</p>
+        
+            <p>Entre las funcionalidades principales se encuentran:</p>
+            <ul>
+                <li><strong>Visualización de embalses cercanos:</strong> Se muestran los embalses dentro del radio de acción configurado por el usuario, con información extraída de nuestras bases de datos.</li>
+                <li><strong>Filtrado avanzado:</strong> Los usuarios pueden realizar filtrados por cualquiera de los atributos de los embalses, como la demarcación, cantidad de agua almacenada, o uso del embalse.</li>
+                <li><strong>Estadísticas personalizadas:</strong> La aplicación permite calcular y visualizar estadísticas importantes, como máximos, mínimos, medias y otros valores clave. Esto incluye datos específicos de la cantidad de agua embalsada al final del año hidrológico o natural, por embalse, ámbito o demarcación.</li>
+            </ul>
+        
+            <p>Además, para garantizar un uso eficiente y seguro de la aplicación, hemos implementado medidas de seguridad avanzadas que previenen ataques como el web scraping o la denegación de servicio (DoS). Estas medidas aseguran que la aplicación funcione de manera óptima incluso frente a consultas masivas provenientes de herramientas automatizadas.</p>
+        
+            <p>Disfruta de una experiencia completa, segura y funcional con nuestra aplicación para la consulta y análisis de datos de embalses.</p>
+        </section>
+    </div>
+
+    <!-- Incluir el JavaScript de Leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Enlazar el archivo JavaScript externo -->
+    <script src="map_script.js"></script>
+    <script src="web_script.js"></script>
+    
+</body>
+</html>
