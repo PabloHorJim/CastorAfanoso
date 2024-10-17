@@ -29,8 +29,15 @@ public class EmbalseController {
      * @return
      */
     @GetMapping("/")
-    public ResponseEntity<List<Embalse>> getPantanos(@RequestParam String x, String y, Integer dist){
+    public ResponseEntity<List<Embalse>> getFromLocalization(@RequestParam String x, String y, Integer dist){
         List<Embalse> embalses = EmbalseService.getFromDist(x,y,dist);
+        if (embalses.isEmpty())
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        return ResponseEntity.ok(embalses);
+    }
+    @GetMapping("/Cuenca")
+    public ResponseEntity<List<String>> getDemarcaciones(){
+        List<String> embalses = EmbalseService.getDemarcaciones();
         if (embalses.isEmpty())
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         return ResponseEntity.ok(embalses);
