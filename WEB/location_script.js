@@ -19,7 +19,7 @@ function showPosition(position) {
     document.getElementById("longitud").value = position.coords.longitude;
     
     document.getElementById("loader").style.display = "none";
-    document.getElementById("getLocation").style.display = "flex";
+    document.getElementById("getLocation").style.display = "inline-block";
 }
 
 function showError(error) {

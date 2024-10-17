@@ -27,18 +27,19 @@
             <!-- Cuadros de texto para mostrar las coordenadas -->
             <div class="coords">
                 <div class="coord_div">
-                    <span class="lat_lon">Latitude:</span>
-                    <input type="text" id="latitud" placeholder="Latitud"/>
+                    <span class="lat_lon">Latitud:</span>
+                    <input type="number" id="latitud" placeholder="Latitud"/>
                 </div>
                 <div class="coord_div">
-                    <span class="lat_lon">Longitude: </span>
-                    <input type="text" id="longitud" placeholder="Longitud"/>
+                    <span class="lat_lon">Longitud: </span>
+                    <input type="number" id="longitud" placeholder="Longitud"/>
                 </div>
                 <div class="coord_div">
                     <span class="lat_lon">Search Radius: </span>
                     <input type="range" min="5" max="1000" value="100" class="slider" id="radius"/>
                     <input type="number" id="radiusValue" value="100" min="0" max="1000"/>
                 </div>
+                
                 <button id="getLocation">Calcular Ubicación Actual</button>
                 <div class="newtons-cradle" id="loader">
                 <div class="newtons-cradle__dot"></div>
