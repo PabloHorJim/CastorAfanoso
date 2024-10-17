@@ -16,7 +16,7 @@ public class EmbalseService {
         //double distancia = calcularDistancia();
     }
 
-    public static double calcularDistancia(double latitudA, double longitudA, double latitudB, double longitudB) {
+    private static double calcularDistancia(double latitudA, double longitudA, double latitudB, double longitudB) {
         final int R = 6371; // Radio de la Tierra en km
 
         // Conversión a radianes
@@ -36,8 +36,36 @@ public class EmbalseService {
 
         return R * c; // Distancia en km
     }
+
+    public static double calcularDistancia(String latitudA, String longitudA, String latitudB, String longitudB) {
+        try {
+            // Reemplazar coma por punto
+            latitudA = latitudA.replace(",", ".");
+            longitudA = longitudA.replace(",", ".");
+            latitudB = latitudB.replace(",", ".");
+            longitudB = longitudB.replace(",", ".");
+
+            // Convertir a double
+            double latitudADouble = Double.parseDouble(latitudA);
+            double longitudADouble = Double.parseDouble(longitudA);
+            double latitudBDouble = Double.parseDouble(latitudB);
+            double longitudBDouble = Double.parseDouble(longitudB);
+
+            return calcularDistancia(latitudADouble, longitudADouble, latitudBDouble, longitudBDouble);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
     public List<Embalse> getFromDist(String lat, String lon, String dist) {
-        List<Embalse> embalses = new LinkedList<>();
+        List<Embalse> embalsesAux = new LinkedList<>();
+        int distancia = Integer.parseInt(dist);
+        for (Embalse embalse : embalses) {
+            double distCalculada = calcularDistancia(embalse.getX(), embalse.getY(), lat, lon);
+            if (distCalculada < distancia && distCalculada > 0)
+                embalsesAux.add(embalse);
+        }
         return embalses;
     }
 }
