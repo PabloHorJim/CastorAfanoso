@@ -24,7 +24,6 @@ public class EmbalseService {
     public EmbalseService() {
         // Print the embalses
         embalses = getEmbalses();
-        printEmbalses(embalses);
     }
     /**
      * This method calculates the distance between two points given their latitude and longitude
