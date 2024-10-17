@@ -23,7 +23,7 @@ public class EmbalseService {
 
     private static List<Embalse> embalses = new ArrayList<Embalse>();
     private static String enlaceBD = "https://gbdc01ffb7d1854-castoresafanosos.adb.eu-madrid-1.oraclecloudapps.com/ords/castor_afanoso/combined_embalses/" ;
-
+    private static String enlaceAgua = "https://gbdc01ffb7d1854-castoresafanosos.adb.eu-madrid-1.oraclecloudapps.com/ords/castor_afanoso/agua/";
     public EmbalseService() {
         embalses = getEmbalses();
     }
@@ -176,5 +176,18 @@ public class EmbalseService {
         for (Embalse embalse : embalses) {
             System.out.println(embalse.toString());
         }
+    }
+
+    public int getMaxEmbalse (Embalse e){
+        int res = 0;
+        int id = e.getId();
+        try {
+            HttpsURLConnection connection = getHttpsURLConnection(enlaceAgua+"id="+id);
+
+        }
+        catch (IOException e){
+
+        }
+        return res;
     }
 }
