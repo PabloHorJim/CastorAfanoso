@@ -7,5 +7,9 @@
     }
 
     numberBox.oninput = function() {
+        // if (this.value < 5 && this.value != "")
+        //     this.value = 5;
+        // else if (this.value > 1000)
+        //     this.value = 1000;
         slider.value = this.value;
     }
