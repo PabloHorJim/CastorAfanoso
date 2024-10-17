@@ -25,20 +25,8 @@ public class EmbalseService {
     private static String enlaceBD = "https://gbdc01ffb7d1854-castoresafanosos.adb.eu-madrid-1.oraclecloudapps.com/ords/castor_afanoso/combined_embalses/" ;
 
     public EmbalseService() {
-        Embalse aux = new Embalse(3,
-                "GUADALQUIVIR",
-                "FERNANDINA, LA",
-                247,
-                0,
-                "38,179645624",
-                "-3,57022439999997",
-                "Jaén",
-                "Andalucía",
-                "Presa de fábrica de gravedad (hormigón vibrado)",
-                null,
-                null);
-        embalses.add(aux);
-        printEmbalses(getEmbalses());
+        embalses = getEmbalses();
+        printEmbalses(embalses);
     }
 
     private static double calcularDistancia(double latitudA, double longitudA, double latitudB, double longitudB) {
@@ -94,7 +82,7 @@ public class EmbalseService {
     }
 
     private HttpsURLConnection getHttpsURLConnection(String url_resource) throws IOException {
-
+        url_resource = url_resource + "?offset=0&limit=1000";
         URL service = new URL(url_resource);
         // Create the connection from the URL
         HttpsURLConnection connection = (HttpsURLConnection) service.openConnection();
