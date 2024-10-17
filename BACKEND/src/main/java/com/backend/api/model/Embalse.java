@@ -30,6 +30,18 @@ public class Embalse {
 
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public String getCota_coron() {
+        return cota_coron;
+    }
+
+    public String getAlt_cimien() {
+        return alt_cimien;
+    }
+
     public int getId() {
         return id;
     }
@@ -66,10 +78,6 @@ public class Embalse {
         return electrico_flag;
     }
 
-    public void setElectrico_flag(double electrico_flag) {
-        this.electrico_flag = electrico_flag;
-    }
-
     public String getX() {
         return x;
     }
@@ -77,6 +85,16 @@ public class Embalse {
     public String getY() {
         return y;
     }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public String getCcaa() {
+        return ccaa;
+    }
+
+
 
     public String toString() {
         return "Embalse{" +
