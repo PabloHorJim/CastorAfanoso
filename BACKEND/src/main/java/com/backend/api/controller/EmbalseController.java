@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @RestController
 public class EmbalseController {
-    EmbalseService service;
+    private EmbalseService service;
 
     @Autowired
     public EmbalseController(EmbalseService service){
