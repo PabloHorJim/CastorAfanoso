@@ -5,11 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class PantanoController {
+public class EmbalseController {
     pantanoService service;
 
     @Autowired
-    public PantanoController(pantanoService service) {
+    public EmbalseController(pantanoService service) {
         this.service = service;
     }
 
